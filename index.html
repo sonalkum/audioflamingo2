@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Flamingo 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        header {
+            background-color: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            text-align: left;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .section img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+        .example-card {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .example-card audio {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .example-content {
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .example-content p {
+            margin: 5px 0;
+        }
+        .model-response {
+            padding: 8px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .ltu {
+            background-color: #e3f2fd;
+        }
+        .qwen2 {
+            background-color: #fff3cd;
+        }
+        .gama {
+            background-color: #f8d7da;
+        }
+        .af {
+            background-color: #d4edda;
+        }
+        .af2 {
+            background-color: #cce5ff;
+            /* font-weight: bold; */
+        }
+        .gemini {
+            background-color: #f7e588;
+            /* font-weight: bold; */
+        }
+        .answer {
+            background-color: #c7feb0;
+        }
+        .subsection {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 40px;
+            padding-top: 10px;
+            border-top: 2px solid #1a1a2e;
+            text-align: center;
+        }
+        .subsection-divider {
+            border-bottom: 2px solid #1a1a2e;
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1a1a2e;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        async function loadExamples() {
+            try {
+                console.log("Fetching JSON data...");
+                const response = await fetch('./af2/examples.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log("JSON data loaded successfully:", data);
+
+                const exampleContainer = document.getElementById('exampleContainer');
+                if (!Array.isArray(data)) {
+                    throw new Error("JSON data is not an array");
+                }
+
+                const subsectionCounts = { "Emergent Ability": 2, "Sound Captioning (AudioCaps)": 2, "Music Captioning (MusicCaps)": 2, "Long Audio Understanding & Reasoning (LongAudioBench)": 6, "Expert Reasoning (MMAU test-mini)": 2, "Expert Reasoning (Muchomusic)":2};
+                let currentIndex = 0;
+                
+                Object.keys(subsectionCounts).forEach(subsection => {
+                    const subsectionTitle = document.createElement('div');
+                    subsectionTitle.className = 'subsection';
+                    subsectionTitle.innerText = subsection;
+                    exampleContainer.appendChild(subsectionTitle);
+                    
+                    for (let i = 0; i < subsectionCounts[subsection]; i++) {
+                        const item = data[currentIndex];
+                        if (!item) break;
+
+                        const card = document.createElement('div');
+                        card.className = 'example-card';
+                        card.innerHTML = `
+                            <audio controls>
+                                <source src="${item.audio}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="example-content">
+                                <p><b>Question: ${item.question}</b></p>
+                                <p class="model-response answer"><b>Ground Truth: ${item.answer || 'N/A'}</b></p>
+                                <p class="model-response af2"><b>Audio Flamingo 2 <i>(ours)</i></b>: ${item.af2_answer || 'N/A'}</p>
+                                <p class="model-response ltu">LTU: ${item.ltu_answer || 'N/A'}</p>
+                                <p class="model-response qwen2">Qwen2-Audio-Instruct: ${item.qwen2_audio_answer || 'N/A'}</p>
+                                <p class="model-response gama">GAMA: ${item.gama_answer || 'N/A'}</p>
+                                <p class="model-response gemini">Gemini: ${item.gemini || 'N/A'}</p>
+                                <p class="model-response af">Audio Flamingo (chat): ${item.af || 'N/A'}</p>
+                            </div>
+                        `;
+                        exampleContainer.appendChild(card);
+                        currentIndex++;
+                    }
+                    
+                    const divider = document.createElement('div');
+                    divider.className = 'subsection-divider';
+                    exampleContainer.appendChild(divider);
+                });
+            } catch (error) {
+                console.error("Error loading JSON:", error);
+            }
+        }
+        window.onload = loadExamples;
+    </script>
+</head>
+<body>
+    <header>
+        <img src="af2/af_logo.png" alt="Audio Flamingo 2 Logo" class="logo">
+        <h1>Audio Flamingo 2</h1>
+        <p>An Audio-Language Model with Long-Audio Understanding and Expert Reasoning Abilities</p>
+    </header>
+    <div class="container">
+        <div class="section">
+            <h2>Abstract</h2>
+            <img src="af2/af2_training_pipeline_old-1.png" alt="Illustration of Audio Flamingo 2" width="75%" class="center">
+            <p>
+                Understanding and reasoning over non-speech sounds and music are crucial for both humans and AI agents
+                to interact effectively with their environments. In this paper, we introduce
+                <strong>Audio Flamingo 2</strong> (AF2), an Audio-Language Model (ALM) with advanced audio
+                understanding and reasoning capabilities. AF2 leverages (i) a custom CLAP model, (ii) synthetic
+                AQA data for fine-grained audio reasoning, and (iii) a multi-stage curriculum learning strategy.
+                AF2 achieves state-of-the-art performance with only a 3B parameter small language model,
+                surpassing large open-source and proprietary models across 20+ benchmarks. Next, for the first
+                time, we extend audio understanding to long audio segments (30 secs - 5 mins) and propose
+                <strong>LongAudio</strong>, a large and novel dataset for training ALMs on long audio captioning
+                and question-answering tasks. Fine-tuning AF2 on LongAudio leads to exceptional performance on
+                our proposed <strong>LongAudioBench</strong>, an expert annotated benchmark for evaluating ALMs
+                on long audio understanding capabilities. We conduct extensive ablation studies to confirm
+                the efficacy of our approach. All code and data will be open-sourced.
+              </p>                </div>
+        <div class="section"> 
+            <h2>Overview</h2>
+            In this paper, we introduce Audio Flamingo 2, an Audio-Language Model with advanced long-audio understanding and reasoning capabilities. Audio Flamingo 2 achieves the state-of-the-art performance across over 20 benchmarks, with only a 3B parameter small language model.
+            <ul>
+                <li>We introduce two datasets, AudioSkills for expert audio reasoning, and LongAudio for long audio understanding, to advance this field.
+                <li>Audio Flamingo 2 has advanced audio understanding and reasoning capabilities. Especially, Audio Flamingo 2 has expert audio reasoning abilities, and can understand long audio up to 5 minuts.
+                    <li>Audio Flamingo 2 outperforms larger and proprietary LALMs across 20+ benchmarks, despite being smaller (3B) and trained exclusively on public datasets.
+        </ul>
+        <img src="af2/radar_af2_new_norm_sk-1.png" alt="Illustration of Audio Flamingo 2" width="50%" class="center">
+        </div>
+    <div class="section">
+        <h2>Key Features</h2>
+        <ul>
+            <li>Advanced audio reasoning and understanding</li>
+            <li>Supports long-audio (30 sec - 5 min) analysis</li>
+            <li>Outperforms larger models across 20+ benchmarks</li>
+            <li>Uses a custom CLAP model with enhanced training</li>
+            <li>Open-source with a demo available</li>
+        </ul>
+    </div>
+
+            <div class="section">
+        <h2>AudioSkills Dataset Examples</h2>
+        <img src="af2/audioskills_examples-1.png" alt="audioskills_exampls" width="75%" class="center">
+    </div>
+
+    <div class="section">
+        <h2>AF-CLAP</h2>
+        <p>
+        Representations in current CLAP models struggle with compositional reasoning and linguistic variations in captions. We introduce an improved version of CLAP called AF-CLAP, where we (1) construct a large-scale, high-quality training dataset, and (2) improve the training objective to for better representational quality and robustness.
+        For each audio-caption pair, we construct linguistically varied captions with identical semantics and composition, and regard these as additional positives. We then generate caption variations with modified temporal or attribute compositions, and regard these as additional negatives. Our improved contrastive loss considers these additional positives and negatives, which leads to more human-aligned representation and better results (in both representation learning and audio understanding).
+    </p>
+        <img src="af2/af2_clap-1.png" alt="CLAP" width="75%" class="center">
+        <img src="af2/AFCLAP_retrieval.png" alt="CLAP" width="75%" class="center">
+        <img src="af2/AF2_clap.png" alt="CLAP" width="50%" class="center">
+        
+    </div>
+
+            <div class="section">
+        <h2>Curriculum Training</h2>
+        <p>Audio Flamingo 2 is trained with a 3-stage curriculum.</p>
+            <ul>
+            <li>We train transformation and cross attention layers on 30 seconds on the pre-training dataset.    
+            <li>Fine-tuning: we train all but LLM layers on 1.5 minutes on the fine-tuning dataset.
+            <li>Long fine-tuning: we train transformation and cross attention layers on 5 minutes on the LongAudio dataset.
+            <li>Additional ablations on the curriculum training can be found below.
+            </ul>
+        <img src="af2/cc_train.png" alt="long audii" width="50%" class="center">
+    </div>
+
+            <div class="section">
+        <h2>Long Audio Training Pipeline</h2>
+        <img src="af2/long_audio_pipeline-1.png" alt="long audii" width="75%" class="center">
+    </div>
+
+            <div class="section">
+        <h2>Benchmarks & Performance</h2>
+        <p>AF2 achieves state-of-the-art accuracy across various benchmarks, including ClothoAQA, AudioCaps, MMAU, and LongAudioBench. It outperforms proprietary models while being significantly smaller.</p>
+        <img src="af2/tab1.png" alt="Benchmark comparison graph">
+        <img src="af2/tab2.png" alt="Performance evaluation chart" width="50%">
+    </div>
+        <div class="section">
+            <h2>Examples for Audio Flamingo 2 on various benchmark datasets</h2>
+            <div id="exampleContainer"></div>
+        </div>
+    </div>
+<!--     <footer>
+        <p>&copy; 2025 Audio Flamingo 2 | ICML Publication</p>
+    </footer> -->
+</body>
+</html>
