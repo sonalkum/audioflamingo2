@@ -125,7 +125,7 @@
                     throw new Error("JSON data is not an array");
                 }
 
-                const subsectionCounts = { "Emergent Ability": 2, "Sound Captioning (AudioCaps)": 2, "Music Captioning (MusicCaps)": 2, "Long Audio Understanding & Reasoning (LongAudioBench)": 6, "Expert Reasoning (MMAU test-mini)": 2, "Expert Reasoning (Muchomusic)":2};
+                const subsectionCounts = { "Emergent Ability (Unseen Task)": 2, "Sound Captioning (AudioCaps)": 2, "Music Captioning (MusicCaps)": 2, "Long Audio Understanding & Reasoning (LongAudioBench)": 8, "Expert Reasoning (MMAU test-mini)": 2, "Expert Reasoning (Muchomusic)":2, "Expert Reasoning (CompA-R-test)":2};
                 let currentIndex = 0;
                 
                 Object.keys(subsectionCounts).forEach(subsection => {
@@ -149,10 +149,11 @@
                                 <p><b>Question: ${item.question}</b></p>
                                 <p class="model-response answer"><b>Ground Truth: ${item.answer || 'N/A'}</b></p>
                                 <p class="model-response af2"><b>Audio Flamingo 2 <i>(ours)</i></b>: ${item.af2_answer || 'N/A'}</p>
+                                <br>
                                 <p class="model-response ltu">LTU: ${item.ltu_answer || 'N/A'}</p>
                                 <p class="model-response qwen2">Qwen2-Audio-Instruct: ${item.qwen2_audio_answer || 'N/A'}</p>
                                 <p class="model-response gama">GAMA: ${item.gama_answer || 'N/A'}</p>
-                                <p class="model-response gemini">Gemini: ${item.gemini || 'N/A'}</p>
+                                <p class="model-response gemini">Gemini Pro v1.5: ${item.gemini || 'N/A'}</p>
                                 <p class="model-response af">Audio Flamingo (chat): ${item.af || 'N/A'}</p>
                             </div>
                         `;
