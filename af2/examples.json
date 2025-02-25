@@ -56,7 +56,7 @@
     },
     {
         "audio": "af2/FMr1WHtXJbc.wav",
-        "question": "provide a caption for the music.",
+        "question": "Provide a caption for the music.",
         "answer": "The low quality recording features an arpeggiated steel acoustic guitar playing alongside acoustic rhythm guitar chord progression. The recording is noisy and in mono and it sounds like a cartoon song.",
         "ltu_answer": "Music featuring guitar playing can be heard.",
         "qwen2_audio_answer": "The music is in C major, with a time signature of 4/4 and a tempo of 103.45 bpm.",
@@ -77,14 +77,14 @@
         "gemini": "The correct answer is (b).\n\nA man's voice clearly says, \"It's over here... Don't lose me.\"\nThere's no other sound effect that matches the other choices.\n"
     },
     {
-        "audio": "af2/000000031848.5.wav",
-        "question": "When is the mellow piano melody heard? Choose the correct option among the options below:\n\n(A) Beginning\n(B) Middle\n(C) End",
-        "answer": "(B) Middle",
-        "ltu_answer": "There is no information about the mellow piano melody in the audio.",
-        "qwen2_audio_answer": "The mellow piano melody can be heard at the beginning of the track, as indicated by the description provided in the background information. Therefore, the answer is (A).",
+        "audio": "af2/000002600970.0.mp3",
+        "question": "When is the song with a male vocalist heard? Choose the correct option among the options below:\n\n(A) Towards the beginning\n(B) In the middle\n(C) Towards the end",
+        "answer": "(B) In the middle",
+        "ltu_answer": "Male vocalist can be heard throughout the audio.",
+        "qwen2_audio_answer": "The male vocalist can be heard at the beginning of the track. Therefore, the answer is (A).",
         "gama_answer": "(A) Beginning",
         "af2_answer": "(b) middle",
-        "af": "Middle",
+        "af": "End",
         "gemini": "The piano melody begins right at the start of the clip. So the answer is (A)."
     },
     {
@@ -99,15 +99,15 @@
         "gemini": "Between the background noise and the clicking sounds, the person in the video is searching for a scrapbook.  They are looking through drawers, bags, and other containers, rummaging around and making the rustling and clicking sounds in the process. They are having a conversation with someone off-camera about the scrapbook and where the pictures might be. They express uncertainty about the scrapbook\u2019s location and wonder if it\u2019s been moved.\n"
     },
     {
-        "audio": "af2/000000032855.3.wav",
-        "question": "What indicates a sudden moment of fear in the audio?",
-        "answer": "a man's voice turns fearful amidst the continuous background noise and animal sounds.",
-        "ltu_answer": "The sad music conveys fearful moment in the audio.",
-        "qwen2_audio_answer": "The change from birds chirping to a loud, high-pitched tone suggests a moment of fear.",
-        "gama_answer": "The suddenness of the human voice and the high pitch of the tone.",
-        "af2_answer": "a male voice speaks in a fearful tone amidst the background noise and bird chirping.",
-        "af": "The ominous and threatening nature of the deep resonant bell sound, along with the low-pitched tones of the wind, all contribute to a sudden moment of fear in the audio.",
-        "gemini": "The sharp gasp or intake of breath at [00:00:48] indicates a sudden moment of fear.\n"
+        "audio": "af2/000000394058.0.wav",
+        "question": "Give a description of the atmosphere in the audio.",
+        "answer": "Intense video game battle with dynamic sound effects, background music, and intermittent male commentary.",
+        "ltu_answer": "The atmosphere of the audio is filled with excitement and impact sounds.",
+        "qwen2_audio_answer": "The atmosphere is intense and action-packed, with an emphasis on conflict and determination.",
+        "gama_answer": "The atmosphere in the audio is one of excitement and anticipation, as the player is about to win a jackpot and receive a prize.",
+        "af2_answer": "Intense video game battle with dynamic sound effects, fast-paced music, and occasional male speech.",
+        "af": "Intense dynamic sound, fast-paced music, and male voice snippets.",
+        "gemini": "An intense video game battle unfolds, filled with vivid sound effects that capture the chaos and energy of combat. The rapid, driving music heightens the tension, while periodic male voice snippets provide guidance or comments, anchoring the player in a thrilling, fast-paced experience."
     },
     {
         "audio": "af2/000002017371.0.wav",
@@ -130,6 +130,28 @@
         "af2_answer": "the male voice transitions from a neutral tone to a disgusted mood while discussing the man's actions.",
         "af": "After the speaker finishes speaking, there is a sharp, brief sound that could be a gasp or a sigh, which could indicate surprise or relief. However, without specific details, it's hard to confirm if that's the case.",
         "gemini": "The shift in the speaker's mood is indicated by the interruption and side conversations happening while he's giving his sermon.  We hear whispers, someone saying \"Stop it,\" and requests to have the disruptive element taken outside. These indicate the speaker is likely becoming increasingly frustrated and perhaps embarrassed by the disruption.  The final exasperated sigh further emphasizes the shift from confident preaching to annoyance and exasperation.\n"
+    },
+    {
+        "audio": "af2/000000013163.0.wav",
+        "question": "How does the intensity of background noise change throughout the audio? Choose the correct option among the options below:\n\n(A) It becomes louder and more chaotic\n(B) It remains consistent\n(C) It decreases over time\n(D) It fluctuates randomly",
+        "answer": "(B) It remains consistent",
+        "ltu_answer": "No details are provided regarding how the background noise varies over the duration of the audio.",
+        "qwen2_audio_answer": "The information provided does not specify how the background noise changes over time, so we cannot accurately answer this question.",
+        "gama_answer": "(B) It remains consistent",
+        "af2_answer": "(b) it remains consistent",
+        "af": "It remains consistent",
+        "gemini": "The intensity of background noise doesn't change throughout the audio and remains consistent. Therefore, the answer is (B) It remains consistent"
+    },
+    {
+        "audio": "af2/000000035561.2.wav",
+        "question": "Where in the audio is the melancholic violin heard? Choose the correct option among the options below:\n\n(A) The beginning\n(B) The middle\n(C) The end",
+        "answer": "(B) The middle",
+        "ltu_answer": "The melancholic violin heard in the beginning of the audio.",
+        "qwen2_audio_answer": "The melancholic violin can be heard at the following times: (A) At the beginning of the loop, and (C) At the very end of the track, right before the fade-out.",
+        "gama_answer": "(A)",
+        "af2_answer": "(b) the middle",
+        "af": "The melancholic violin is heard towards the end of the audio.",
+        "gemini": "A melancholy violin appears around the middle of the audio track, so the answer is (B)."
     },
     {
         "audio": "af2/5cd015ad-5997-424c-8ea7-c52cf8c23045.wav",
@@ -174,5 +196,27 @@
         "af2_answer": "(b) edm and house",
         "af": "The two genres that are primarily combined in this music piece are techno and trance.",
         "gemini": "The primary genres combined in this piece are (A) Techno and Trance."
+    },
+    {
+        "audio": "af2/YhBsNc8TxxkA.wav",
+        "question": "Given the continuous presence of mechanisms sound and the children's laughter, what kind of children's play could be occurring?",
+        "answer": "Based on the sound of mechanisms and children's laughter and speech, they might be playing on a swing or slide.",
+        "ltu_answer": "The children might be playing with toys.",
+        "qwen2_audio_answer": "The children might be engaged in a game that involves running, jumping, or hide-and-seek, which often results in laughter and physical activity.",
+        "gama_answer": "It is possible that the children are playing with toys or engaging in physical activities that involve the use of mechanisms, such as riding a bicycle or playing with a ball that has a mechanism inside it.",
+        "af2_answer": "the children could be playing with playground equipment like swings or sea-saw, as indicated by the mechanism sounds and their laughter.",
+        "af": "The children might be playing games which involve physical activity and laughter like hide-and-seek.",
+        "gemini": "The children may be playing a game that includes running and jumping, frequently sparking laughter."
+    },
+    {
+        "audio": "af2/Y4wXy58UF4Io.wav",
+        "question": "Based on the audio, determine the likely activity the child might be engaged in during the singing.",
+        "answer": "The child might be partaking in a playful or creative activity that involves singing, possibly a game or a sing-along scenario.",
+        "ltu_answer": "It is probable that the child is simultaneously engaged in both singing and playing.",
+        "qwen2_audio_answer": "The child is likely singing and playing at the same time.",
+        "gama_answer": "The child might be singing in a classroom or at home, as the audio does not provide enough information to determine the specific activity. However, the presence of a child singing suggests that the child might be engaged in a musical activity, such as singing a song or practicing a vocal exercise.",
+        "af2_answer": "the child might be engaged in a playful or creative activity, as suggested by the presence of a child's voice and the accompanying music.",
+        "af": "The child’s voice and accompanying music suggest a playful or creative activity.",
+        "gemini": "The child could be in a classroom environment, actively engaged in a group-based activity that involves singing and playful interactions. This might include chanting songs, clapping rhythms, or using simple instruments, fostering creativity, cooperation, and enjoyment while promoting social and musical development."
     }
 ]
